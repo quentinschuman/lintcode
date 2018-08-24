@@ -1,9 +1,16 @@
 package lintcode;
 
+import java.util.Stack;
+
 public class ImplementQueuebyTwoStacks {
 
-	public MyQueue() {
-        // do intialization if necessary
+	public Stack<Integer> stack1;
+	public Stack<Integer> stack2;
+	public Stack<Integer> curStack;
+	
+	public void MyQueue() {
+        stack1 = new Stack<Integer>();
+        stack2 = new Stack<Integer>();
     }
 
     /*
@@ -11,21 +18,31 @@ public class ImplementQueuebyTwoStacks {
      * @return: nothing
      */
     public void push(int element) {
-        // write your code here
+        stack1.push(element);
     }
 
     /*
      * @return: An integer
      */
     public int pop() {
-        // write your code here
+    	if(stack2.empty()){
+            while(!stack1.empty()){
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.pop();
     }
 
     /*
      * @return: An integer
      */
     public int top() {
-        // write your code here
+    	if(stack2.empty()){
+            while(!stack1.empty()){
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.peek();
     }
 	
 	public static void main(String[] args) {
