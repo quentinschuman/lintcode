@@ -13,43 +13,50 @@ package lintcode;
 public class SearchforaRange {
 
 	public int[] searchRange(int[] A, int target) {
-        // write your code here
-		int[] indexs=new int[2];
-		int start=0;
-		int end=0;
-		if (A==null || A.length<2) {
-			indexs[0]=-1;
-			indexs[1]=-1;
-			return indexs;
+		// write your code here
+		int[] res = { -1, -1 };
+		if (A == null || A.length < 1)
+			return res;
+		int start = 0, end = A.length - 1;
+		int mid;
+		while (start + 1 < end) {
+			mid = start + (end - start) / 2;
+			if (A[mid] < target)
+				start = mid;
+			else
+				end = mid;
 		}
-		for(int i=0;i<A.length;i++) {
-			if (A[i]==target) {
-				start=i;
-			}else if (A[i]==A[i+1]) {
-				break;
-			}else {
-				start=-1;
-			}
-			end=i;
+		if (A[start] == target)
+			res[0] = start;
+		else if (A[end] == target)
+			res[0] = end;
+		else
+			return res;
+		start = 0;
+		end = A.length - 1;
+		while (start + 1 < end) {
+			mid = start + (end - start) / 2;
+			if (A[mid] > target)
+				end = mid;
+			else
+				start = mid;
 		}
-		if (start!=-1) {
-			indexs[0]=start;
-			indexs[1]=end;
-		}else {
-			indexs[0]=-1;
-			indexs[1]=-1;
-		}
-		
-		return indexs;
-    }
-	
+		if (A[end] == target)
+			res[1] = end;
+		else if (A[start] == target)
+			res[1] = start;
+		else
+			return res;
+		return res;
+	}
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SearchforaRange searchforaRange=new SearchforaRange();
-		int[] A= {1};
-		int target=1;
+		SearchforaRange searchforaRange = new SearchforaRange();
+		int[] A = { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
+		int target = 5;
 		System.out.println(searchforaRange.searchRange(A, target));
 	}
 

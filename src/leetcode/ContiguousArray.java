@@ -12,16 +12,16 @@ package leetcode;
  */
 public class ContiguousArray {
 
-	public int findMaxLength(int[] nums) {
-		int m=0,n=0;
-		int res=0;
-		if (nums.toString().contains()) {
-			
-		}
-		for(int i=0;i<nums.length;i++) {
-			
-		}
-	}
+//	public int findMaxLength(int[] nums) {
+//		int m=0,n=0;
+//		int res=0;
+//		if (nums.toString().contains()) {
+//			
+//		}
+//		for(int i=0;i<nums.length;i++) {
+//			
+//		}
+//	}
 
 	/**
 	 * @param args
