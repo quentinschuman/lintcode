@@ -6,34 +6,53 @@
 */
 package pat;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		Integer A=scanner.nextInt();
-		Integer B=scanner.nextInt();
-		Integer D=scanner.nextInt();
-		Integer sum=A+B;
-		StringBuffer sb=new StringBuffer();
-		sb=Format(sum,D,sb);
-		System.out.println(sb.reverse());
-		scanner.close();
-	}
-
-	/**
-	 * @param sum
-	 * @param d
-	 * @param list
-	 * @return
-	 */
-	private static StringBuffer Format(Integer sum, Integer D, StringBuffer sb) {
-		while(sum!=0) {
-			int n=sum%D;
-			sb.append(n);
-			sum=sum/D;
+	public static void main(String[] args) throws IOException {
+//		Scanner scanner = new Scanner(System.in);
+//		int[] nums=new int[10];
+//		StringBuffer sb=new StringBuffer();
+//		for(int i=0;i<10;i++) {
+//			nums[i]=scanner.nextInt();
+//		}
+//		for(int j=0;j<10;j++) {
+//			if (nums[0]!=0) {
+//				
+//			}
+//			if (nums[j]!=0) {
+//				for(int k=0;k<nums[j];k++) {
+//					sb.append(j);
+//				}
+//			}
+//			if (nums[j]==0) {
+//				sb.append(0);
+//			}
+//		}
+//		System.out.println(Integer.parseInt(sb.toString()));
+//		scanner.close();
+		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+		String[] b=bf.readLine().trim().split(" ");
+		int[] a=new int[b.length];
+		int count=0;
+		int zero=Integer.parseInt(b[0]);
+		for(int i=1,j=a.length;i<j;i++) {
+			a[i]=Integer.parseInt(b[i]);
+			if (a[i]!=0) {
+				for(int c=0;c<a[i];c++) {
+					System.out.print(i);
+					count++;
+					if (zero!=0 && count==1) {
+						for(int d=0;d<zero;d++) {
+							System.out.print("0");
+						}
+					}
+				}
+			}
 		}
-		return sb;
 	}
 }
